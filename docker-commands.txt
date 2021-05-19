@@ -1,0 +1,14 @@
+# In the backend directory
+
+docker build --tag backend-app .
+docker run --publish 8000:8000 backend-app
+
+# In the frontend directory
+
+docker build --tag frontend-app .
+docker run --publish 4000:4000 frontend-app
+
+# In the root directory
+docker-compose up --build
+docker-compose down
+docker system prune
