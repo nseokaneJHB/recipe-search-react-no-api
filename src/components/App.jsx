@@ -4,7 +4,7 @@ import { MDBContainer } from 'mdbreact';
 import axios from "axios";
 import { v4 as uuidv4 } from 'uuid';
 
-import { FR_Credentials } from '../FR_Credentials';
+// import { FR_Credentials } from '../FR_Credentials';
 import { Recipes } from '../fr_data';
 
 // Components
