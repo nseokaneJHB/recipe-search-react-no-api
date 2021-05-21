@@ -1,8 +1,3 @@
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-
-import image from  '../assets/media/food_recipes_icons_black.png';
-
 // Custome components
 import Recipes from './Recipes';
 
@@ -22,7 +17,6 @@ const FoodAndRecipeList = ({ foodAndRecipes }) => {
 								<h1>No recipe found</h1>
 							</div>
 						}
-						
 					</div>
 				))
 				:

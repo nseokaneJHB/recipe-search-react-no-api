@@ -65,8 +65,8 @@
 }
 
 .main .food-recipes .recipes {
-  -ms-grid-columns: (minmax(270px, 1fr))[auto-fit];
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  -ms-grid-columns: (minmax(260px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   -ms-grid-rows: auto;
       grid-template-rows: auto;
   padding-top: 1rem;
@@ -82,20 +82,18 @@
 }
 
 .main .food-recipes .recipes .recipe .recipe-main img {
+  max-width: 265px;
   border: 1px solid;
-  min-height: 366px;
-  min-width: 358px;
-  max-width: 360px;
 }
 
 .main .food-recipes .recipes .recipe .recipe-main img::before {
   background: url("../media/food_recipes_icons_white.png") no-repeat 0 0;
   background-color: var(--mainColor);
-  background-size: 365px 356px;
+  background-size: 260px 260px;
   display: inline-block;
-  min-height: 330px;
-  min-width: 358px;
-  max-width: 360px;
+  min-height: 233px;
+  min-width: 260px;
+  max-width: 260px;
   content: "";
 }
 
@@ -156,7 +154,8 @@
   overflow-x: hidden;
   padding: 1rem 0 0;
   border: 1px solid;
-  height: 330px;
+  max-width: 265px;
+  height: 230px;
 }
 
 .main .food-recipes .recipes .recipe .recipe-main .recipe-details .recipe-inner-wrapper .recipe-wrapper::-webkit-scrollbar {
@@ -179,8 +178,80 @@
   color: var(--mainText);
   padding: .3rem 1rem;
   text-align: center;
+  max-width: 265px;
   display: block;
   width: 100%;
+}
+
+.main .recipe-details-main {
+  text-align: start;
+  padding: 1rem;
+}
+
+.main .recipe-details-main .small-details {
+  margin-bottom: .6rem;
+  font-size: small;
+}
+
+.main .recipe-details-main .small-details p {
+  margin: 0;
+}
+
+.main .recipe-details-main .more-details {
+      grid-template-areas: "ingredients health" "visualization visualization";
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: 150px 1fr;
+      grid-template-rows: 150px 1fr;
+  display: -ms-grid;
+  display: grid;
+  gap: 10px;
+}
+
+.main .recipe-details-main .more-details .ingredients, .main .recipe-details-main .more-details .health {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.main .recipe-details-main .more-details .ingredients h5, .main .recipe-details-main .more-details .health h5 {
+  background-color: var(--mainColor);
+  color: var(--mainText);
+  padding: .1rem .5rem;
+}
+
+.main .recipe-details-main .more-details .ingredients ul, .main .recipe-details-main .more-details .health ul {
+  list-style-position: inside;
+  overflow-y: scroll;
+  padding-left: 1rem;
+  margin: 0;
+}
+
+.main .recipe-details-main .more-details .ingredients ul li, .main .recipe-details-main .more-details .health ul li {
+  font-size: 13px;
+}
+
+.main .recipe-details-main .more-details .ingredients {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: ingredients;
+}
+
+.main .recipe-details-main .more-details .health {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: health;
+}
+
+.main .recipe-details-main .more-details .visualization {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: visualization;
 }
 
 .footer {

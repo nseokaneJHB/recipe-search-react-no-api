@@ -1,7 +1,10 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
-const Recipes = ({recipe}) => {
-	console.log(recipe);
+import slugify from 'react-slugify';
+
+const Recipes = ({ recipe }) => {
 	let { image, label, ingredients, url, shareAs } = recipe
 
 	return (
@@ -12,7 +15,7 @@ const Recipes = ({recipe}) => {
 					<div className="recipe-details">
 						<div className="recipe-inner-wrapper">
 							<div className="recipe-wrapper">
-								<a href={shareAs} target="_blank" className="text-center font-bolder"><strong>{label}</strong></a>
+								<a href={shareAs} target="_blank" className="text-center font-bolder ml-3"><strong>{label}</strong></a>
 								<br />
 								<small><strong>Ingredients:</strong></small>
 								<ul className="ingredients">
@@ -25,7 +28,8 @@ const Recipes = ({recipe}) => {
 									}
 								</ul>
 							</div>
-							<a className="recipe-btn" href={url} target="_blank">Lets cook!</a>
+							{/* <a className="recipe-btn" href={url} target="_blank">Lets cook!</a> */}
+							<Link className="recipe-btn" to={`${slugify(label)}`}>View recipe</Link>
 						</div>
 					</div>
 				</div>
