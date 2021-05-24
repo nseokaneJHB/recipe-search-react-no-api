@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { MDBFormInline, MDBBtn, MDBIcon } from 'mdbreact';
 
 const SearchForm = ({ getData }) => {
 
@@ -15,7 +16,7 @@ const SearchForm = ({ getData }) => {
 	}
 
 	return (
-		<form className="container mb-4 pl-5 pr-5">
+		<form className="container mb-4 pl-5 pr-5" onSubmit={startSearch}>
 			<div className="container pl-5 pr-5 form-row">
 				<div className="col-sm-11">
 					<div className="input-group input-group-sm">
