@@ -28,7 +28,7 @@ const Recipes = ({ recipe }) => {
 									}
 								</ul>
 							</div>
-							{/* <a className="recipe-btn" href={url} target="_blank">Lets cook!</a> */}
+							
 							<Link className="recipe-btn" to={`${slugify(label)}`}>View recipe</Link>
 						</div>
 					</div>

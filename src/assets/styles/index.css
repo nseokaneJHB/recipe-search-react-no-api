@@ -40,17 +40,7 @@
   height: 80%;
 }
 
-.main .md-form {
-  display: -webkit-box !important;
-  display: -ms-flexbox !important;
-  display: flex !important;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding: 1rem;
-}
-
-.main .md-form .search-btn {
+.main .search-btn {
   background-color: var(--mainColor) !important;
 }
 
@@ -189,7 +179,7 @@
 }
 
 .main .recipe-details-main .small-details {
-  margin-bottom: .6rem;
+  margin-bottom: 1rem;
   font-size: small;
 }
 
@@ -197,61 +187,58 @@
   margin: 0;
 }
 
-.main .recipe-details-main .more-details {
-      grid-template-areas: "ingredients health" "visualization visualization";
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
-  -ms-grid-rows: 150px 1fr;
-      grid-template-rows: 150px 1fr;
-  display: -ms-grid;
-  display: grid;
-  gap: 10px;
-}
-
 .main .recipe-details-main .more-details .ingredients, .main .recipe-details-main .more-details .health {
+  -webkit-box-shadow: inset var(--mainShadow);
+          box-shadow: inset var(--mainShadow);
+  border-bottom: 1px solid;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  margin-bottom: 1.2rem;
+  border-radius: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  height: 200px;
 }
 
 .main .recipe-details-main .more-details .ingredients h5, .main .recipe-details-main .more-details .health h5 {
   background-color: var(--mainColor);
   color: var(--mainText);
-  padding: .1rem .5rem;
+  padding: .5rem .5rem;
+  border-radius: 8px;
 }
 
-.main .recipe-details-main .more-details .ingredients ul, .main .recipe-details-main .more-details .health ul {
+.main .recipe-details-main .more-details .ingredients ul, .main .recipe-details-main .more-details .ingredients ol, .main .recipe-details-main .more-details .health ul, .main .recipe-details-main .more-details .health ol {
   list-style-position: inside;
   overflow-y: scroll;
   padding-left: 1rem;
   margin: 0;
 }
 
-.main .recipe-details-main .more-details .ingredients ul li, .main .recipe-details-main .more-details .health ul li {
+.main .recipe-details-main .more-details .ingredients ul li, .main .recipe-details-main .more-details .ingredients ol li, .main .recipe-details-main .more-details .health ul li, .main .recipe-details-main .more-details .health ol li {
   font-size: 13px;
 }
 
+.main .recipe-details-main .more-details .ingredients ul li::before, .main .recipe-details-main .more-details .ingredients ol li::before, .main .recipe-details-main .more-details .health ul li::before, .main .recipe-details-main .more-details .health ol li::before {
+  font-weight: bolder;
+}
+
 .main .recipe-details-main .more-details .ingredients {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
   grid-area: ingredients;
 }
 
 .main .recipe-details-main .more-details .health {
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
   grid-area: health;
 }
 
 .main .recipe-details-main .more-details .visualization {
-  -ms-grid-row: 2;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
   grid-area: visualization;
+  overflow-y: scroll;
+  margin-top: 2rem;
+  height: 384px;
+  padding: 10px;
 }
 
 .footer {

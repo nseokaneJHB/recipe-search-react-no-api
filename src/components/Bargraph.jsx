@@ -1,56 +1,32 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
 
-const Bargraph = () => {
+const Bargraph = ({ graphOptions }) => {
 
-	// set data
-	const [barData, setBarData] = useState({
-		labels: ['label 1', 'label 2', 'label 3', 'label 4'],
-		datasets: [
-			{
-				label: 'Calories per Label',
-				data: [
-					48,
-					35,
-					73,
-					82
-				],
-				backgroundColor: [
-					'rgba(255, 99, 132, 0.6)',
-					'rgba(54, 162, 235, 0.6)',
-					'rgba(255, 206, 86, 0.6)',
-					'rgba(75, 192, 192, 0.6)',
-				],
-				borderWidth: 3
-			}
-		]
-	});
-
-	// set options
-	const [barOptions, setBarOptions] = useState({
-		options: {
-			scales: {
-				yAxes: [
-					{
-						ticks: {
-							beginAtZero: true
-						}
-					}
-				]
+	const options = {
+		indexAxis: 'y',
+		// Elements options apply to all of the options unless overridden in a dataset
+		// In this case, we are setting the border of each horizontal bar to be 2px wide
+		elements: {
+			bar: {
+				borderWidth: 10,
+			},
+		},
+		responsive: true,
+		plugins: {
+			legend: {
+				position: 'right',
 			},
 			title: {
 				display: true,
-				text: 'Data Orgranized In Bars',
-				fontSize: 25
+				text: 'Calories (kcal) per Digest',
 			},
-			legend: {
-				display: true,
-				position: 'top'
-			}
-		}
-	})
+		},
+	};
 
-	return  <><Bar data={barData} options={barOptions.options} /> </>
+	return <>
+		<Bar data={graphOptions} options={options} height="500px" />
+	</>
 }
 
 export default Bargraph

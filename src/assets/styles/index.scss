@@ -45,15 +45,10 @@ $tablet: 750px;
 	margin-top: 6.5rem;
 	height: 80%;
 
-	.md-form{
-		display: flex !important;
-		justify-content: center;
-		padding: 1rem;
-		.search-btn{
-			background-color: var(--mainColor) !important;
-		}
+	.search-btn{
+		background-color: var(--mainColor) !important;
 	}
-
+	
 	.food-recipes{
 		h2{
 			border-radius: var(--mainBorderRadius);
@@ -178,7 +173,7 @@ $tablet: 750px;
 		text-align: start;
 		padding: 1rem;
 		.small-details{
-			margin-bottom: .6rem;
+			margin-bottom: 1rem;
 			font-size: small;
 			p{
 				margin: 0;
@@ -186,28 +181,31 @@ $tablet: 750px;
 		}
 
 		.more-details{
-			grid-template-areas: "ingredients health" "visualization visualization";
-			grid-template-columns: 1fr 1fr;
-			grid-template-rows: 150px 1fr;
-			display: grid;
-			gap: 10px;
-
 			.ingredients, .health{
+				box-shadow: inset var(--mainShadow);
+				border-bottom: 1px solid;
 				flex-direction: column;
+				margin-bottom: 1.2rem;
+				border-radius: 10px;
 				display: flex;
+				height: 200px;
 				h5{
 					background-color: var(--mainColor);
 					color: var(--mainText);
-					padding: .1rem .5rem;
+					padding: .5rem .5rem;
+					border-radius: 8px;
 				}
 
-				ul{
+				ul, ol{
 					list-style-position: inside;
 					overflow-y: scroll;
 					padding-left: 1rem;
 					margin: 0;
 					li{
 						font-size: 13px;
+						&::before{
+							font-weight: bolder;
+						}
 					}
 				}
 			}
@@ -222,6 +220,10 @@ $tablet: 750px;
 
 			.visualization{
 				grid-area: visualization;
+				overflow-y: scroll;
+				margin-top: 2rem;
+				height: 384px;
+				padding: 10px;
 			}
 		}
 	}
