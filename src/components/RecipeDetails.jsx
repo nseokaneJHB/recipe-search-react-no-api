@@ -14,18 +14,23 @@ const RecipeDetails = ({ foods }) => {
 
 	const [graphOptions, setGraphOptions] = useState({})
 	const [graphData, setGraphData] = useState({label: [], dataset: [], backgroundColor: [], borderColor: []})
+	const [meal, setMeal] = useState("")
 
 	const [moreDetails, setMoreDetails] = useState({
 		totalCalories: 0.0,
 		totalWeight: 0.0,
 		ingredients: [],
 		healthLabels: [],
-		dietLabels: []
+		dietLabels: ""
 	})
 
 	const getMoreDetails = () => {
-		for (const food in foods) {
-			let results = foods[food].hits.filter(one_recipe => slugify(one_recipe.recipe.label) === recipe_name.recipe)[0].recipe
+		foods.map(food => {
+			let one_recipe = food.hits.filter(recipe => slugify(recipe.recipe.label) === recipe_name.recipe)
+
+			if (!one_recipe[0]) return
+
+			let results = one_recipe[0].recipe
 
 			results.digest.map(labels => {
 				if (!labels.total > 2) return
@@ -52,15 +57,29 @@ const RecipeDetails = ({ foods }) => {
 				hoverOffset: 4,
 			})
 
-			setMoreDetails({
-				totalCalories: results.calories,
-				totalWeight: results.totalWeight,
-				ingredients: results.ingredients,
-				healthLabels: results.healthLabels,
-				dietLabels: results.dietLabels
-			})
-		}
+			if (results.dietLabels.length > 0) {
+				setMoreDetails({
+					totalCalories: results.calories,
+					totalWeight: results.totalWeight,
+					ingredients: results.ingredients,
+					healthLabels: results.healthLabels,
+					dietLabels: titleCaseMeal(results.dietLabels[0])
+				})
+			}else{
+				setMoreDetails({
+					totalCalories: results.calories,
+					totalWeight: results.totalWeight,
+					ingredients: results.ingredients,
+					healthLabels: results.healthLabels,
+					dietLabels: titleCaseMeal(results.dishType[0])
+				})
+			}
+		});
 	}
+
+	const titleCaseMeal = (str) =>{
+		return str.split(' ').map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase()).join(' ');
+	};
 
 	useEffect(() => {
 		getMoreDetails();
@@ -71,7 +90,7 @@ const RecipeDetails = ({ foods }) => {
 			<div className="small-details">
 				<p><strong>Total Calories:</strong> {moreDetails.totalCalories}</p>
 				<p><strong>Total Weight:</strong> {moreDetails.totalWeight}</p>
-				<p><strong>{moreDetails.dietLabels[0]} Meal</strong></p>
+				<p><strong>{moreDetails.dietLabels} Meal</strong></p>
 			</div>
 			<div className="more-details">
 				<div className="ingredients">
@@ -79,7 +98,7 @@ const RecipeDetails = ({ foods }) => {
 					<ul className="row">
 						{moreDetails.ingredients.length > 0 ? 
 							moreDetails.ingredients.map(ingredients => (
-								<li className="col-md-6" key={ingredients.foodId}>{ingredients.text}</li>
+								<li className="col-md-6" key={ingredients.foodId + idv4().slice(0, 3)}>{ingredients.text}</li>
 							))
 							:
 							<h1>No ingredients found</h1>

@@ -28,6 +28,21 @@ $tablet: 750px;
 	margin: 0;
 }
 
+body{
+	&::-webkit-scrollbar {
+		width: 5px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: white;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: grey;
+		border-radius: 20px;
+	}
+}
+
 .navbar{
 	background-color: var(--mainColor) !important;
 }
@@ -36,6 +51,8 @@ $tablet: 750px;
 	flex-direction: column;
 	display: flex;
 	height: 100vh;
+	margin: auto;
+	width: 90%;
 }
 
 .main{
@@ -45,8 +62,44 @@ $tablet: 750px;
 	margin-top: 6.5rem;
 	height: 80%;
 
-	.search-btn{
-		background-color: var(--mainColor) !important;
+	.search-form{
+		align-items: center;
+		display: flex;
+		width: 100%;
+
+		.search-input{
+			position: relative;
+			display: flex;
+
+			svg{
+				box-shadow: none !important;
+				position: absolute;
+				padding-left: 5px;
+				margin-left: 8px;
+				height: 100%;
+				width: 23px;
+			}
+
+			input{
+				padding-left: 40px;
+				border-right: none;
+				border-left: none;
+				border-top: none;
+				box-shadow: none;
+				width: 240px;
+				height: 30px;
+			}
+		}
+
+		.search-btn{
+			background-color: var(--mainColor) !important;
+			color: var(--mainText);
+			letter-spacing: 3px;
+			margin-left: 10px;
+			border: none;
+			height: 30px;
+			width: 100px;
+		}
 	}
 	
 	.food-recipes{
@@ -59,9 +112,11 @@ $tablet: 750px;
 			padding: 1rem;
 			margin: 0;
 		}
+
 		.recipes{
 			grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 			grid-template-rows: auto;
+			place-items: center;
 			padding-top: 1rem;
 			display: grid;
 			gap: 1rem;
@@ -147,7 +202,7 @@ $tablet: 750px;
 								}
 
 								&::-webkit-scrollbar-thumb {
-									background-color: blue;
+									background-color: grey;
 									border-radius: 20px;
 								}
 							}
@@ -198,8 +253,8 @@ $tablet: 750px;
 
 				ul, ol{
 					list-style-position: inside;
+					padding : 0 0 1rem 1rem;
 					overflow-y: scroll;
-					padding-left: 1rem;
 					margin: 0;
 					li{
 						font-size: 13px;
@@ -221,9 +276,22 @@ $tablet: 750px;
 			.visualization{
 				grid-area: visualization;
 				overflow-y: scroll;
+				overflow-x: scroll;
+				max-height: 365px;
 				margin-top: 2rem;
-				height: 384px;
-				padding: 10px;
+
+				&::-webkit-scrollbar {
+					width: 5px;
+				}
+
+				&::-webkit-scrollbar-track {
+					background: white;
+				}
+
+				&::-webkit-scrollbar-thumb {
+					background-color: grey;
+					border-radius: 20px;
+				}
 			}
 		}
 	}
@@ -240,6 +308,39 @@ $tablet: 750px;
 		a{
 			color: var(--mainColor);
 			padding: 5px;
+		}
+	}
+}
+
+@include tablet{
+	.main{
+		padding-right: 5rem;
+		padding-left: 5rem;
+		margin-right: auto;	
+		margin-left: auto;
+		width: 98%;
+
+		.search-form {
+			margin: auto;
+			width: 600px;
+
+			.search-input{
+				position: relative;
+				display: flex;
+	
+				svg{
+					position: absolute;
+					padding-left: 5px;
+					margin-left: 8px;
+					height: 100%;
+					width: 23px;
+				}
+	
+				input{
+					padding-left: 40px;
+					width: 500px;
+				}
+			}
 		}
 	}
 }
